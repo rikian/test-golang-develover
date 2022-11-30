@@ -13,7 +13,7 @@ go mod tidy
 
 # Create .env file
 
-make sure, in the folder config -> config.go. you need to change projectDirName to root your working directory
+make sure, in the folder config -> config.go. you need to change projectDirName to root your working directory name
 ```
 const projectDirName = "your root working directory name"
 ```
