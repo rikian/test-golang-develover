@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Dec  1 01:06:40 2022
+# Make data base, printed on Thu Dec  1 04:05:03 2022
 
 # Variables
 
@@ -17,13 +17,9 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-NO_AT_BRIDGE = 1
-# environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
-# environment
-GJS_DEBUG_OUTPUT = stderr
 # environment
 LC_NAME = id_ID.UTF-8
 # environment
@@ -69,7 +65,7 @@ XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.A0LOW1
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.6247
+GNOME_TERMINAL_SERVICE = :1.6488
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -103,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 2733
+VSCODE_PID = 106917
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -131,11 +127,9 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/24601455_d0b1_4973_b997_8a97bfb313f8
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/5b2ec881_f879_4272_8caa_d1c68ee7383a
 # environment
 MAKELEVEL := 0
 # default
@@ -152,8 +146,6 @@ LC_MONETARY = id_ID.UTF-8
 LC_TIME = id_ID.UTF-8
 # environment
 GOROOT = /usr/lib/go
-# environment
-INVOCATION_ID = 2391dbc2b4d048b6919b223800fb9ede
 # environment
 USERNAME = rikian
 # environment
@@ -178,8 +170,6 @@ ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = rikian
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile
 .DEFAULT_GOAL := gnpall
 # environment
@@ -193,13 +183,9 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-MANAGERPID = 1844
-# environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
 LC_MEASUREMENT = id_ID.UTF-8
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2733
 # environment
 _ = /usr/bin/code
 # environment
@@ -210,8 +196,6 @@ XDG_RUNTIME_DIR = /run/user/1000
 COLORTERM = truecolor
 # environment
 NVM_CD_FLAGS = 
-# environment
-JOURNAL_STREAM = 8:30714
 # environment
 GOMODCACHE = /home/rikian/go/pkg/mod
 # environment
@@ -253,7 +237,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = id_ID.UTF-8
 # variable set hash-table stats:
-# Load=120/1024=12%, Rehash=0, Collisions=12/150=8%
+# Load=112/1024=11%, Rehash=0, Collisions=11/142=8%
 
 # Pattern-specific Variable Values
 
@@ -278,7 +262,6 @@ rdoc:
 #  recipe to execute (from 'Makefile', line 36):
 	docker start server-alpha
 
- 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
@@ -295,6 +278,7 @@ bimage:
 
 mock:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 16):
@@ -388,6 +372,6 @@ r:
 # strcache performance: lookups = 52 / hit rate = 32%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=0/52=0%
-# Finished Make data base on Thu Dec  1 01:06:40 2022
+# Finished Make data base on Thu Dec  1 04:05:03 2022
 
  
