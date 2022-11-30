@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "go/service1/grpc-app/protos/products";
+
+import "protos/auth.proto";
+
+service ProductRPC {
+    rpc InsertProduct (Request) returns (Response) {}
+    rpc GetAllProduct (RequestGetAllProduct) returns (ResponseGetAllProduct) {}
+    rpc GetProductById (Request) returns (Response) {}
+    rpc UpdateProduct (Request) returns (Response) {}
+    rpc DeleteProduct (Request) returns (Response) {}
+}
+
+message Product {
+    string user_id=1;
+    string product_id=2;
+    string product_name=3;
+    string product_category=4;
+    string product_info=5;
+    uint32 product_stock=6;
+    uint32 product_price=7;
+    string product_image=8;
+    uint32 product_sell=9;
+    string created_date=10;
+    string last_update=11;
+}
+
+message RequestGetAllProduct {
+    message Data {
+        uint32 limit = 1;
+    }
+
+    Data data = 1;
+}
+
+message ResponseGetAllProduct {
+    Info info = 1;
+    repeated Product data = 2;
+}
+
+message Request {
+    Product data = 1;
+}
+
+message Response {
+    Info info = 1;
+    Product data = 2;
+}

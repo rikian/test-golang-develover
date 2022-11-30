@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/rikian/Documents/golang/go-ecommers/test-golang-developer'
+protoc --go_out=grpc-app/protos/auth --go_opt=Mprotos/auth.proto=/ --go-grpc_out=grpc-app/protos/auth --go-grpc_opt=Mprotos/auth.proto=/ protos/auth.proto
+protoc --go_out=grpc-app/protos/users --go_opt=Mprotos/user.proto=/ --go-grpc_out=grpc-app/protos/users --go-grpc_opt=Mprotos/user.proto=/ protos/user.proto
+protoc --go_out=grpc-app/protos/products --go_opt=Mprotos/product.proto=/ --go-grpc_out=grpc-app/protos/products --go-grpc_opt=Mprotos/product.proto=/ protos/product.proto
+protoc --proto_path=protos protos/image.proto --go_out=grpc-app/protos/images --go-grpc_out=grpc-app/protos/images
+make: Leaving directory '/home/rikian/Documents/golang/go-ecommers/test-golang-developer'
+ 

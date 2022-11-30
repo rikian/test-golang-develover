@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option go_package = "go/service1/grpc-app/protos/users";
+
+package protos;
+
+import "protos/product.proto";
+import "protos/auth.proto";
+
+service UserRPC {
+    rpc SelectUser (RequestSelectUser) returns (ResponseSelectUser) {}
+    rpc SelectUsers (RequestSelectUsers) returns (ResponseSelectUsers) {}
+    rpc SelectSessionUserById(RequestSelectSessionUserById) returns (ResponseSelectSessionUserById) {}
+}
+
+message User {
+    string user_id = 1;
+    string user_email = 2;
+    string user_name = 3;
+    string user_image = 4;
+    string user_password = 5;
+    string user_session = 6;
+    string user_status = 7;
+    string created_date = 8;
+    string last_update = 9;
+    bool remember_me = 10;
+    repeated Product products = 11;
+}
+
+// request
+message RequestSelectUser {
+    message Data {
+        string user_id = 1;
+    }
+    
+    Data data = 1;
+}
+
+message RequestSelectUsers {
+    message Data {
+        uint32 limit = 1;
+    }
+
+    Data data = 1;
+}
+
+message RequestSelectSessionUserById {
+    message Data {
+        string user_id = 1;
+    }
+
+    Data data = 1;
+}
+
+// response
+message ResponseSelectUser {
+    Info info = 1;
+    User data = 2;
+}
+
+message ResponseSelectUsers {
+    Info info = 1;
+    repeated User data = 2;
+}
+
+message ResponseSelectSessionUserById {
+    Info info = 1;
+
+    message Data {
+        string user_session = 1;
+        bool remember_me = 2;
+    }
+
+    Data data = 2;
+}

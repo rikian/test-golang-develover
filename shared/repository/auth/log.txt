@@ -1,0 +1,24 @@
+{"level":"info","ts":"2022-11-30T14:34:48.886+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-11-30T14:34:48.887+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-11-30T14:34:48.887+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-11-30T14:34:48.888+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T00:17:12.935+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T00:17:12.936+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T00:17:12.937+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T00:17:12.938+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T00:17:51.410+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T00:17:51.410+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T00:17:51.411+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T00:17:51.412+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T01:01:54.670+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T01:01:54.671+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:01:54.672+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:01:54.672+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T01:02:32.986+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T01:02:32.987+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:02:32.988+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:02:32.988+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T01:07:24.098+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T01:07:24.101+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:07:24.102+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T01:07:24.102+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
