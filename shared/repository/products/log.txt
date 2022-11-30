@@ -23,3 +23,15 @@
 {"level":"info","ts":"2022-12-01T01:07:26.254+0700","caller":"products/product_impl.go:105","msg":"record not found"}
 {"level":"info","ts":"2022-12-01T01:07:26.254+0700","caller":"products/product_impl.go:187","msg":"row affected deleteProduct not equal 1"}
 {"level":"info","ts":"2022-12-01T01:07:26.254+0700","caller":"products/product_impl.go:171","msg":"Canceled Insert Product"}
+{"level":"info","ts":"2022-12-01T05:05:03.468+0700","caller":"products/product_impl.go:54","msg":"ERROR: insert or update on table \"products\" violates foreign key constraint \"fk_public_products_category\" (SQLSTATE 23503)"}
+{"level":"info","ts":"2022-12-01T05:05:03.469+0700","caller":"products/product_impl.go:31","msg":"Canceled Insert Product"}
+{"level":"info","ts":"2022-12-01T05:05:03.472+0700","caller":"products/product_impl.go:70","msg":"Canceled Insert Product"}
+{"level":"info","ts":"2022-12-01T05:05:03.473+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:03.473+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:03.474+0700","caller":"products/product_impl.go:94","msg":"Canceled Insert Product"}
+{"level":"info","ts":"2022-12-01T05:05:03.494+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:03.497+0700","caller":"products/product_impl.go:121","msg":"canceled request update product"}
+{"level":"info","ts":"2022-12-01T05:05:03.501+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:03.502+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:03.503+0700","caller":"products/product_impl.go:187","msg":"row affected deleteProduct not equal 1"}
+{"level":"info","ts":"2022-12-01T05:05:03.503+0700","caller":"products/product_impl.go:171","msg":"Canceled Insert Product"}

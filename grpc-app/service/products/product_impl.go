@@ -12,20 +12,20 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type productsServiceImpl struct {
+type ProductsServiceImpl struct {
 	pb.UnimplementedProductRPCServer
 	productUC products.ProductUseCase
 	logger    *zap.Logger
 }
 
 func NewProductService(productUC products.ProductUseCase, logger *zap.Logger) pb.ProductRPCServer {
-	return &productsServiceImpl{
+	return &ProductsServiceImpl{
 		productUC: productUC,
 		logger:    logger,
 	}
 }
 
-func (p *productsServiceImpl) InsertProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
+func (p *ProductsServiceImpl) InsertProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service insert product")
@@ -54,7 +54,7 @@ func (p *productsServiceImpl) InsertProduct(c context.Context, i *pb.Request) (*
 	}
 }
 
-func (p *productsServiceImpl) GetAllProduct(c context.Context, i *pb.RequestGetAllProduct) (*pb.ResponseGetAllProduct, error) {
+func (p *ProductsServiceImpl) GetAllProduct(c context.Context, i *pb.RequestGetAllProduct) (*pb.ResponseGetAllProduct, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service get all product")
@@ -80,7 +80,7 @@ func (p *productsServiceImpl) GetAllProduct(c context.Context, i *pb.RequestGetA
 	}
 }
 
-func (p *productsServiceImpl) GetProductById(c context.Context, i *pb.Request) (*pb.Response, error) {
+func (p *ProductsServiceImpl) GetProductById(c context.Context, i *pb.Request) (*pb.Response, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service get product by id")
@@ -106,7 +106,7 @@ func (p *productsServiceImpl) GetProductById(c context.Context, i *pb.Request) (
 	}
 }
 
-func (p *productsServiceImpl) UpdateProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
+func (p *ProductsServiceImpl) UpdateProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service update product")
@@ -132,7 +132,7 @@ func (p *productsServiceImpl) UpdateProduct(c context.Context, i *pb.Request) (*
 	}
 }
 
-func (p *productsServiceImpl) DeleteProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
+func (p *ProductsServiceImpl) DeleteProduct(c context.Context, i *pb.Request) (*pb.Response, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service delete product")

@@ -21,5 +21,5 @@ func InitializeAuthService(db *gorm.DB, logger *zap.Logger) (pbAuth.AuthRPCServe
 		serviceAuth.NewAuthService,
 	)
 
-	return &serviceAuth.AuthService{}, nil
+	return &serviceAuth.AuthServiceImpl{}, nil
 }

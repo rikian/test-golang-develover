@@ -7,9 +7,9 @@ gnpall:
 
 # generate all injector
 injall:
-	wire ./grpc-app/service/injector/users
-	wire ./grpc-app/service/injector/auth
-	wire ./grpc-app/service/injector/products
+	wire ./grpc-app/injector/users
+	wire ./grpc-app/injector/auth
+	wire ./grpc-app/injector/products
 
 # genrate all mock service
 mock:

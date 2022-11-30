@@ -2,9 +2,11 @@ package listener
 
 import (
 	// injector
-	authInjector "go/service1/grpc-app/service/injector/auth"
-	productInjector "go/service1/grpc-app/service/injector/products"
-	userInjector "go/service1/grpc-app/service/injector/users"
+	"go/service1/common"
+	authInjector "go/service1/grpc-app/injector/auth"
+	productInjector "go/service1/grpc-app/injector/products"
+	userInjector "go/service1/grpc-app/injector/users"
+	"go/service1/grpc-app/interceptor"
 
 	// pbService
 	pbAuth "go/service1/grpc-app/protos/auth"
@@ -13,9 +15,7 @@ import (
 
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 
-	"go/service1/common"
 	"go/service1/config"
-	"go/service1/grpc-app/interceptor"
 	"log"
 	"net"
 	"os"
@@ -30,7 +30,11 @@ import (
 	"google.golang.org/grpc"
 )
 
-var (
+type Listener interface {
+	Run()
+}
+
+type listernerImpl struct {
 	logger            *zap.Logger
 	dbConn            *gorm.DB
 	grpcServerOptions []grpc.ServerOption
@@ -38,83 +42,86 @@ var (
 	grpcHealthServer  *health.Server
 	address           string
 	done              chan os.Signal
-)
+}
 
-func initMain() {
+func NewListenerImpl() Listener {
+	return &listernerImpl{}
+}
+
+func (l *listernerImpl) InitMain() {
 	// load env file
 	config.LoadEnvFile()
 
 	// create logger file
-	logger = common.BuildLogger()
+	l.logger = common.BuildLogger()
 
 	// running database
-	dbConn = config.ConnectDB()
+	l.dbConn = config.ConnectDB()
 
 	// passing address
-	address = os.Getenv("GRPC_ADDRESS")
+	l.address = os.Getenv("GRPC_ADDRESS")
 
-	done = make(chan os.Signal, 1)
-
-	if address == "" {
-		address = "127.0.0.1:12345"
+	if l.address == "" {
+		l.address = "127.0.0.1:12345"
 	}
 
-	grpcServerOptions = []grpc.ServerOption{
-		grpc.UnaryInterceptor(interceptor.AuthInterceptor(logger)),
+	l.done = make(chan os.Signal, 1)
+
+	l.grpcServerOptions = []grpc.ServerOption{
+		grpc.UnaryInterceptor(interceptor.AuthInterceptor(l.logger)),
 	}
 
-	grpcServer = grpc.NewServer(grpcServerOptions...)
-	grpcHealthServer = health.NewServer()
+	l.grpcServer = grpc.NewServer(l.grpcServerOptions...)
+	l.grpcHealthServer = health.NewServer()
 }
 
-func registerService(s *grpc.Server, h *health.Server, db *gorm.DB, log *zap.Logger) {
+func (l *listernerImpl) RegisterService() {
 	// initial service
-	authService, _ := authInjector.InitializeAuthService(db, log)
-	usersService, _ := userInjector.InitializeUsersService(db, log)
-	productsService, _ := productInjector.InitializeProductsService(db, log)
+	authService, _ := authInjector.InitializeAuthService(l.dbConn, l.logger)
+	usersService, _ := userInjector.InitializeUsersService(l.dbConn, l.logger)
+	productsService, _ := productInjector.InitializeProductsService(l.dbConn, l.logger)
 	// imagesService, _ := imagesInjector.InitializeUsersService()
 
 	// register service
-	pbAuth.RegisterAuthRPCServer(s, authService)
-	pbUsers.RegisterUserRPCServer(s, usersService)
-	pbProducts.RegisterProductRPCServer(s, productsService)
+	pbAuth.RegisterAuthRPCServer(l.grpcServer, authService)
+	pbUsers.RegisterUserRPCServer(l.grpcServer, usersService)
+	pbProducts.RegisterProductRPCServer(l.grpcServer, productsService)
 
 	// health service
-	h.SetServingStatus(pbUsers.UserRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	h.SetServingStatus(pbAuth.AuthRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	h.SetServingStatus(pbProducts.ProductRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	l.grpcHealthServer.SetServingStatus(pbUsers.UserRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	l.grpcHealthServer.SetServingStatus(pbAuth.AuthRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	l.grpcHealthServer.SetServingStatus(pbProducts.ProductRPC_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 
-	healthpb.RegisterHealthServer(s, h)
+	healthpb.RegisterHealthServer(l.grpcServer, l.grpcHealthServer)
 }
 
-func Run() {
-	initMain()
+func (l *listernerImpl) Run() {
+	l.InitMain()
 
-	listen, err := net.Listen("tcp", address)
+	listen, err := net.Listen("tcp", l.address)
 
 	if err != nil {
 		log.Fatalf("failed to listen grpc server, err: %v", err.Error())
 	}
 
-	reflection.Register(grpcServer)
+	reflection.Register(l.grpcServer)
+	l.RegisterService()
 
-	registerService(grpcServer, grpcHealthServer, dbConn, logger)
-
-	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+	signal.Notify(l.done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
-		err = grpcServer.Serve(listen)
+		err = l.grpcServer.Serve(listen)
 		if err != nil {
 			log.Fatalf("failed to serve: %v", err)
 		}
 	}()
 
-	log.Print("Grpc service 1 running at " + address)
-	logger.Info("Grpc service 1 running at " + address)
+	log.Print("Grpc service 1 running at " + l.address)
+	l.logger.Info("Grpc service 1 running at " + l.address)
 
-	<-done
+	<-l.done
 
-	logger.Info("Service is going to stop")
-	grpcServer.Stop()
-	logger.Info("Service exited properly")
+	l.logger.Info("Service is going to stop")
+	l.grpcServer.Stop()
+	l.logger.Info("Service exited properly")
 }

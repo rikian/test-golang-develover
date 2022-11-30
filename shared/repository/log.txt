@@ -1,3 +1,4 @@
 {"level":"info","ts":"2022-12-01T01:01:54.433+0700","caller":"products/product_impl.go:105","msg":"record not found"}
 {"level":"info","ts":"2022-12-01T01:02:32.384+0700","caller":"products/product_impl.go:105","msg":"record not found"}
 {"level":"info","ts":"2022-12-01T01:07:23.878+0700","caller":"products/product_impl.go:105","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:01.781+0700","caller":"products/product_impl.go:105","msg":"record not found"}

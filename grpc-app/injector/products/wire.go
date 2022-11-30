@@ -21,5 +21,5 @@ func InitializeProductsService(db *gorm.DB, logger *zap.Logger) (pbProduct.Produ
 		serviceProduct.NewProductService,
 	)
 
-	return &serviceProduct.ProductService{}, nil
+	return &serviceProduct.ProductsServiceImpl{}, nil
 }

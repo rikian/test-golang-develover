@@ -10,20 +10,20 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type authServiceImpl struct {
+type AuthServiceImpl struct {
 	pb.UnimplementedAuthRPCServer
 	authUseCase auth.AuthUseCase
 	logger      *zap.Logger
 }
 
 func NewAuthService(authUseCase auth.AuthUseCase, logger *zap.Logger) pb.AuthRPCServer {
-	return &authServiceImpl{
+	return &AuthServiceImpl{
 		authUseCase: authUseCase,
 		logger:      logger,
 	}
 }
 
-func (a *authServiceImpl) RegisterUser(ctx context.Context, i *pb.RequestRegister) (*pb.ResponseRegister, error) {
+func (a *AuthServiceImpl) RegisterUser(ctx context.Context, i *pb.RequestRegister) (*pb.ResponseRegister, error) {
 	select {
 	case <-ctx.Done():
 		log.Print("canceled from service register user")
@@ -49,7 +49,7 @@ func (a *authServiceImpl) RegisterUser(ctx context.Context, i *pb.RequestRegiste
 	}
 }
 
-func (a *authServiceImpl) LoginUser(c context.Context, i *pb.RequestLogin) (*pb.ResponseLogin, error) {
+func (a *AuthServiceImpl) LoginUser(c context.Context, i *pb.RequestLogin) (*pb.ResponseLogin, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service login user")

@@ -23,5 +23,5 @@ func InitializeUsersService(db *gorm.DB, logger *zap.Logger) (pbUsers.UserRPCSer
 		serviceUser.NewUserServiceImpl,
 	)
 
-	return &serviceUser.UserServiceImpl{}, nil
+	return &serviceUser.UsersServiceImpl{}, nil
 }

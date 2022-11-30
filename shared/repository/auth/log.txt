@@ -22,3 +22,7 @@
 {"level":"info","ts":"2022-12-01T01:07:24.101+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
 {"level":"info","ts":"2022-12-01T01:07:24.102+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
 {"level":"info","ts":"2022-12-01T01:07:24.102+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}
+{"level":"info","ts":"2022-12-01T05:05:01.980+0700","caller":"auth/auth_impl.go:73","msg":"ERROR: duplicate key value violates unique constraint \"idx_public_users_user_email\" (SQLSTATE 23505)"}
+{"level":"info","ts":"2022-12-01T05:05:01.982+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:01.982+0700","caller":"auth/auth_impl.go:149","msg":"record not found"}
+{"level":"info","ts":"2022-12-01T05:05:01.983+0700","caller":"auth/auth_impl.go:139","msg":"auth-repo-login : request canceled"}

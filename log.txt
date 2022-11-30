@@ -1,0 +1,3 @@
+{"level":"info","ts":"2022-12-01T05:05:08.929+0700","caller":"grpc-app/listener.go:73","msg":"Grpc service 1 running at 127.0.0.1:12345"}
+{"level":"info","ts":"2022-12-01T05:05:14.259+0700","caller":"grpc-app/listener.go:77","msg":"Service is going to stop"}
+{"level":"info","ts":"2022-12-01T05:05:14.259+0700","caller":"grpc-app/listener.go:79","msg":"Service exited properly"}

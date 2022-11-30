@@ -12,20 +12,20 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type userServiceImpl struct {
+type UsersServiceImpl struct {
 	pb.UnimplementedUserRPCServer
 	usersUseCase users.UsersUseCase
 	logger       *zap.Logger
 }
 
 func NewUserServiceImpl(UsersUseCase users.UsersUseCase, logger *zap.Logger) pb.UserRPCServer {
-	return &userServiceImpl{
+	return &UsersServiceImpl{
 		usersUseCase: UsersUseCase,
 		logger:       logger,
 	}
 }
 
-func (u *userServiceImpl) SelectUser(c context.Context, i *pb.RequestSelectUser) (*pb.ResponseSelectUser, error) {
+func (u *UsersServiceImpl) SelectUser(c context.Context, i *pb.RequestSelectUser) (*pb.ResponseSelectUser, error) {
 	select {
 	case <-c.Done():
 		log.Print("canceled from service select user")
@@ -56,7 +56,7 @@ func (u *userServiceImpl) SelectUser(c context.Context, i *pb.RequestSelectUser)
 	}
 }
 
-func (a *userServiceImpl) SelectSessionUserById(c context.Context, i *pb.RequestSelectSessionUserById) (*pb.ResponseSelectSessionUserById, error) {
+func (a *UsersServiceImpl) SelectSessionUserById(c context.Context, i *pb.RequestSelectSessionUserById) (*pb.ResponseSelectSessionUserById, error) {
 	select {
 	case <-c.Done():
 		log.Print("cancelled from service select user by id")
