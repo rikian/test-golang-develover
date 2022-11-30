@@ -15,7 +15,7 @@ go mod tidy
 
 make sure, in the folder config -> config.go. you need to change projectDirName to root your working directory
 ```
-const projectDirName = "your root working directory"
+const projectDirName = "your root working directory name"
 ```
 see --> https://github.com/joho/godotenv/issues/43#issuecomment-503183127
 
