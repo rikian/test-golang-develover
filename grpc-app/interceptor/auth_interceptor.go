@@ -48,6 +48,8 @@ func AuthInterceptor(logger *zap.Logger) grpc.UnaryServerInterceptor {
 			// next if authentication valid
 			data, err := handler(ctx, req)
 
+			log.Print(data)
+
 			if err != nil {
 				logger.Error(err.Error())
 				return nil, err

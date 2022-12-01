@@ -12,6 +12,31 @@ go mod tidy
 ```
 
 # Create .env file
+see file .env.eample
+```
+# config postgres
+DB_HOST=localhost
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_NAME=db_main
+DB_PORT=5432
+
+#JWT SECRET
+JWT_SECRET=S4n94t_R4h4S14_BRO...
+
+#DEBUG_MODE
+DEBUG=true
+
+# grpc address WITH PORT
+GRPC_ADDRESS=127.0.0.1:12345
+
+# migration
+DB_MIGRATION=false
+
+# status
+# STATUS=DEVELOPMENT
+STATUS=PRODUCTION
+```
 
 make sure, in the folder config -> config.go. you need to change projectDirName to root your working directory name
 ```
